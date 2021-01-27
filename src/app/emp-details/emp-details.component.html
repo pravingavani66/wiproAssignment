@@ -1,30 +1,29 @@
 
- <h4>Employee Details{{ title }}</h4>
+ <h4>Employee Details ( {{ allempDetails.length }} )</h4>
  <hr>
  <div class="row">
    <div class="col-2">
-    <select class="form-select">
-      <option selected>Department</option>
-      <option value="1">Computer</option>
-      <option value="2">Physics</option>
-      <option value="3">Chemistry</option>
+    <select name="my-select" [(ngModel)]="selectedDep" (change)="selectedDepData()">
+        <option [value]="item.value" *ngFor="let item of depData">
+            {{item.name}}
+        </option>
     </select>
    </div>
-   <div class="col-4 input-group-sm">
-    <input type="type" class="form-control" id="name" placeholder="Name / Email">
+   <div class="col-3 input-group-sm">
+    <input type="type" class="form-control" id="name" [(ngModel)]="searchData" placeholder="Name / Email">
    </div>
    <div class="col-1 ">
-    <button type="button" class="btn btn-primary btn-sm">Search</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="getData()">Search</button>
    </div>
    <div class="col-3">
-    <button type="button" class="btn btn-primary btn-sm"> Reset and Reload Data</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="resetData()"> Reset and Reload Data</button>
    </div>
    <div class="col-1  align-self-end ml-auto">
-    <select class="form-select">
-      <option selected>Sort By</option>
-      <option value="1">Name</option>
-      <option value="1">Department</option>
-    </select>
+    <select name="sort-select" [(ngModel)]="selectedSort" (change)="SortData()">
+      <option [value]="item.value" *ngFor="let item of sortData">
+          {{item.name}}
+      </option>
+  </select>
    </div>
  </div>
  <hr>
@@ -39,11 +38,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr *ngFor="let empDetail of empDetails">
+        <td>{{empDetail.name}}</td>
+        <td>{{empDetail.age}}</td>
+        <td>{{empDetail.email}}</td>
+        <td>{{empDetail.departments.length}}</td>
       </tr>
     </tbody>
   </table>
