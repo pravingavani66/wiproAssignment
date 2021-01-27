@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IEmpDetails } from '../models/empDeatails.interface';
-import { employees } from "../../assets/data (1).js";
-import { isConstructSignatureDeclaration } from 'typescript';
 
 @Component({
   selector: 'app-emp-details',
@@ -9,7 +7,6 @@ import { isConstructSignatureDeclaration } from 'typescript';
   styleUrls: ['./emp-details.component.scss']
 })
 export class EmpDetailsComponent implements OnInit {
-  title = 'assignment1';
   empDetails: IEmpDetails[];
   searchData: string;
   allempDetails:IEmpDetails[];
